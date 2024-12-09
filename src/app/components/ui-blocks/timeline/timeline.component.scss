@@ -1,0 +1,9 @@
+:host {
+
+}
+
+.timeline-item {
+  &:empty {
+    display: none;
+  }
+}

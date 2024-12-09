@@ -1,0 +1,10 @@
+<ng-container [formGroup]="formGroup">
+  <div class="notes-form--section">
+    <app-textarea formControlName="note" placeholder="Add a note about Vlad Ivashchenko..."/>
+  </div>
+
+  <div class="notes-form--section">
+    <app-chips-list formControlName="type" [options]="notesOptions"/>
+    <app-button [disabled]="!formGroup.valid" (click)="createNote()">Submit</app-button>
+  </div>
+</ng-container>
