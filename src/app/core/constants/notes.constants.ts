@@ -1,4 +1,5 @@
 import { IChipsListOption } from '../interfaces/chils-list.interfaces';
+import { TNoteType } from '../types/notes.types';
 
 export const CNoteOptions: IChipsListOption[] = [
   {
@@ -27,3 +28,11 @@ export const CNoteOptions: IChipsListOption[] = [
     icon: 'meeting-note',
   }
 ];
+
+export const CActionsText: {[key in TNoteType]: string} = {
+  message: 'had a meeting with',
+  phone: 'had a meeting with',
+  coffee: 'had a coffee with',
+  beer: 'had a beer with',
+  'meeting-note': 'added a note to',
+}

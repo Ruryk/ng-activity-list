@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 // Models
@@ -13,6 +13,7 @@ import { IconComponent } from '../../ui-blocks/icon/icon.component';
   ],
   templateUrl: './chips-list.component.html',
   styleUrl: './chips-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -22,6 +23,8 @@ import { IconComponent } from '../../ui-blocks/icon/icon.component';
   ]
 })
 export class ChipsListComponent implements ControlValueAccessor {
+  private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+
   @Input() options: IChipsListOption[] = [];
 
   public value: string = '';
@@ -32,6 +35,7 @@ export class ChipsListComponent implements ControlValueAccessor {
 
   writeValue(value: string | null): void {
     this.value = value || '';
+    this.cdr.markForCheck();
   }
 
   registerOnChange(fn: () => void): void {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // Components
 import { ActivityListComponent } from '../../components/ui-blocks/activity-list/activity-list.component';
@@ -10,7 +10,8 @@ import { ActivityListComponent } from '../../components/ui-blocks/activity-list/
     ActivityListComponent
   ],
   templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  styleUrl: './main.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainComponent {
 

@@ -1,16 +1,21 @@
 import { createAction } from '@ngrx/store';
-import { INote } from '../../core/interfaces/notes.interfaces';
+
+// Models
+import { INote, INoteMeta } from '../../core/interfaces/notes.interfaces';
 
 export enum ENotesActionsType {
   AddNewNote = '[NOTES] Add new note',
   AddNewNoteSuccess = '[NOTES] Add new note success',
   AddNewNoteError = '[NOTES] Add new note error',
+  DeleteNote = '[NOTES] Delete note',
+  DeleteNoteSuccess = '[NOTES] Delete note success',
+  DeleteNoteError = '[NOTES] Delete note error',
 }
 
-// Load worker call history
+// Add note
 export const addNewNote = createAction(
   ENotesActionsType.AddNewNote,
-  (note: INote) => ({ note })
+  (noteMeta: INoteMeta) => ({ noteMeta })
 );
 
 export const addNewNoteSuccess = createAction(
@@ -20,5 +25,21 @@ export const addNewNoteSuccess = createAction(
 
 export const addNewNoteError = createAction(
   ENotesActionsType.AddNewNoteError,
+  (error: any) => ({ error })
+);
+
+// Delete note
+export const deleteNote = createAction(
+  ENotesActionsType.DeleteNote,
+  (id: string) => ({ id })
+);
+
+export const deleteNoteSuccess = createAction(
+  ENotesActionsType.DeleteNoteSuccess,
+  (id: string) => ({ id })
+);
+
+export const deleteNoteError = createAction(
+  ENotesActionsType.DeleteNoteError,
   (error: any) => ({ error })
 );

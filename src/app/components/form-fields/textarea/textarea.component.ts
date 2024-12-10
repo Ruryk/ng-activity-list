@@ -1,17 +1,19 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, inject, Input } from '@angular/core';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-textarea',
   standalone: true,
   imports: [
     MatFormField,
-    MatInput
+    MatInput,
+    FormsModule
   ],
   templateUrl: './textarea.component.html',
   styleUrl: './textarea.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -21,6 +23,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class TextareaComponent implements ControlValueAccessor {
+  private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+
   @Input() placeholder = 'Type...';
   @Input() rows: number = 2;
 
@@ -32,6 +36,7 @@ export class TextareaComponent implements ControlValueAccessor {
 
   writeValue(value: string | null): void {
     this.value = value;
+    this.cdr.markForCheck();
   }
 
   registerOnChange(fn: () => void): void {
@@ -46,9 +51,7 @@ export class TextareaComponent implements ControlValueAccessor {
     this.disabled = isDisabled;
   }
 
-  changeValue(event: Event): void {
-    const value = (event.target as HTMLTextAreaElement).value;
-
+  changeValue(value: string): void {
     this.onChange(value);
     this.onTouched();
   }

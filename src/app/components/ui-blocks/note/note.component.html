@@ -1,1 +1,20 @@
-<p>note works!</p>
+<div class="note-col">
+  <div class="note-col--item item-title">
+    <span class="bold-text">You</span>
+    {{ actionText }}
+    <span class="bold-text">{{ note.user }}</span>
+  </div>
+
+  <div class="note-col--item item-subtitle">
+    {{ note.note }}
+  </div>
+</div>
+
+<div class="note-col">
+  <div class="note-col--item item-action" matTooltip="Delete" (click)="onDeleteNote()">
+    <app-icon svgIcon="arrow_down"/>
+  </div>
+</div>
+
+
+

@@ -1,9 +1,9 @@
 <mat-form-field appearance="outline">
   <textarea matInput
             [disabled]="disabled"
-            [value]="value"
+            [(ngModel)]="value"
             [placeholder]="placeholder"
             [rows]="rows"
-            (input)="changeValue($event)"
+            (ngModelChange)="changeValue($event)"
   ></textarea>
 </mat-form-field>

@@ -53,3 +53,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mat-mdc-notch-piece {
   border-color: var(--secondary) !important;
 }
+
+// Button
+button.mdc-button {
+  border-radius: 4px !important;
+
+  &:not(.mat-mdc-button-disabled) {
+    background-color: var(--secondary);
+    color: var(--white);
+  }
+}
+
+.mdc-button__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+// Spinner
+.mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle, .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+  stroke: var(--secondary) !important;
+}

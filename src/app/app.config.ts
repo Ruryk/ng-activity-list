@@ -11,6 +11,7 @@ import { routes } from './app.routes';
 
 // Store
 import { notesFeature } from './store/notes/notes.reducers';
+import { NotesEffects } from './store/notes/notes.effects';
 
 // Initializers
 import { initializeApplication } from './core/initializers/app.initializer';
@@ -32,7 +33,7 @@ export const appConfig: ApplicationConfig = {
     },
     provideStore(),
     provideState(notesFeature),
-    provideEffects(),
+    provideEffects(NotesEffects),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
 ]
 };

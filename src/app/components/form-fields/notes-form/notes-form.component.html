@@ -5,6 +5,6 @@
 
   <div class="notes-form--section">
     <app-chips-list formControlName="type" [options]="notesOptions"/>
-    <app-button [disabled]="!formGroup.valid" (click)="createNote()">Submit</app-button>
+    <app-button [loading]="loading" [disabled]="!formGroup.valid" (click)="createNote()">Submit</app-button>
   </div>
 </ng-container>

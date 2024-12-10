@@ -4,4 +4,6 @@ export enum EIconNames {
   Coffee = 'coffee',
   Beer = 'beer',
   MeetingNote = 'meeting-note',
+  List = 'list',
+  ArrowDown = 'arrow_down',
 }

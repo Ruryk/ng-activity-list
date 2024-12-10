@@ -1,3 +1,25 @@
-<app-timeline>
-  <app-notes-form slot="header"/>
-</app-timeline>
+<div class="activity-list--item item-form">
+  <div class="item-prefix">
+    <div class="item-prefix--icon">
+      <app-icon svgIcon="list"/>
+    </div>
+  </div>
+  <div class="item-icon">
+
+  </div>
+  <app-notes-form [loading]="(loading$ | async) || false"/>
+</div>
+
+@for (note of (notes$ | async) | sortByTimestamp: 'timestamp'; track note.id) {
+  <div class="activity-list--item">
+    <div class="item-prefix">
+      <div class="item-prefix--time">
+        {{ note.timestamp | daysDifference }}
+      </div>
+      <div class="item-prefix--icon">
+        <app-icon [svgIcon]="note.icon"/>
+      </div>
+    </div>
+    <app-note [note]="note" (deleteNote)="onDeleteNote($event)"/>
+  </div>
+}
