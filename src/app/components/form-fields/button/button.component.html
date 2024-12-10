@@ -1,0 +1,6 @@
+<button [disabled]="disabled || loading" mat-raised-button>
+  @if (loading) {
+    <mat-spinner [diameter]="16"/>
+  }
+  <ng-content/>
+</button>

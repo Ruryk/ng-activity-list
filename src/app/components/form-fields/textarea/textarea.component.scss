@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  width: 100%;
+
+  .mat-mdc-form-field {
+    width: 100%;
+  }
+
+  textarea {
+    resize: none;
+  }
+}
