@@ -66,7 +66,6 @@ export class NotesEffects {
 
   saveStorage$ = createEffect(() => this.actions$.pipe(
     ofType(ENotesActionsType.AddNewNoteSuccess, ENotesActionsType.DeleteNoteSuccess),
-    map(() => this.store.select(notesFeature.selectNotes)),
     switchMap(() => this.store.select(notesFeature.selectNotes).pipe(
       take(1),
       map((notes) => {
